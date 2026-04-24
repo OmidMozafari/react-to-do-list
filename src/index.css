@@ -1,0 +1,164 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background: linear-gradient(to right, #01153a, #0e3372);
+  height: 100vh;              
+  display: flex;              
+  justify-content: center;   
+  align-items: center;        
+}
+/* container section  */
+.container{
+  background-color: rgb(0, 0, 0);
+  height:400px ;
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 50px 30px 30px 30px ;
+  height: max-content;
+}
+
+/* title section of the container */
+.Header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.Header h2{
+ font-size: 24px;
+ color: white;
+}
+.icon{
+ font-size: 24px;
+}
+
+/* input section of the container */
+.inputContainer{
+  width: 100%;
+  position: relative; 
+  margin-bottom:15px ;
+}
+
+.inputContainer input{
+  width: 100%;
+  padding: 12px 100px 12px 20px; 
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: rgb(44, 44, 44);
+}
+
+.inputContainer button{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 35px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: grey;
+}
+
+.inputContainer button:hover{
+  color: black;
+  background-color: rgb(192, 188, 188)
+}
+
+
+.listItemContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.listItemContainer li{
+  background-color: rgb(44, 44, 44);
+  color: white;
+  padding: 5px;
+  padding-right: 0;
+  border-radius: 5px;
+  list-style-type: none;
+}
+
+.listItems{
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconListItem{
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: 18px;
+}
+
+.iconListItem:hover{
+  cursor: pointer;
+}
+
+.checkboxContainer{
+  display: flex;
+  align-items: center;
+}
+
+
+.checkboxContainer input {
+  display: none;
+}
+
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkboxContainer input:checked + .checkmark {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+
+.checkboxContainer input:checked + .checkmark::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* footer section  */
+footer{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  margin-top: 20px;
+}
+footer button{
+  background-color: rgb(223, 85, 108);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+footer button:hover{
+    background-color: rgb(202, 2, 36);
+
+}
