@@ -5,8 +5,7 @@
   box-sizing: border-box;
 }
 body{
-  background: linear-gradient(to right, #01153a, #0e3372);
-  height: 100vh;              
+  background: linear-gradient(to right, #01153a, #0e3372);      
   display: flex;              
   justify-content: center;   
   align-items: center;
@@ -24,28 +23,28 @@ body{
   border-radius: 40px;
   cursor: pointer;
   outline: none;
+
 }
 
 
 /* container section  */
 .containerNight{
   background-color: rgb(0, 0, 0);
-  height:400px ;
   width: 400px;
   margin: 0 auto;
   border-radius: 10px;
   padding: 50px 30px 30px 30px ;
-  height: max-content;
+  margin-top: 100px;
+
 }
 
 .containerDay{
   background: linear-gradient(135deg, #10ff88, #d2dad2);
-  height:400px ;
   width: 400px;
   margin: 0 auto;
   border-radius: 10px;
-  padding: 50px 30px 30px 30px ;
-  height: max-content;
+  padding: 50px 30px 30px 30px ;  
+  margin-top: 100px;
 }
 
 .containerDay .inputContainer input {
