@@ -10,7 +10,7 @@ body{
   display: flex;              
   justify-content: center;   
   align-items: center;
-  position: relative;        
+  position: relative;      
 }
 
 /* day mode and night mode  */
@@ -23,11 +23,12 @@ body{
   top: 10px;
   border-radius: 40px;
   cursor: pointer;
+  outline: none;
 }
 
 
 /* container section  */
-.container{
+.containerNight{
   background-color: rgb(0, 0, 0);
   height:400px ;
   width: 400px;
@@ -35,6 +36,60 @@ body{
   border-radius: 10px;
   padding: 50px 30px 30px 30px ;
   height: max-content;
+}
+
+.containerDay{
+  background: linear-gradient(135deg, #10ff88, #d2dad2);
+  height:400px ;
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 50px 30px 30px 30px ;
+  height: max-content;
+}
+
+.containerDay .inputContainer input {
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.containerDay .inputContainer button {
+  background-color: #4CAF50;   
+  color: white;
+  transition: 0.3s;
+}
+
+.containerDay .inputContainer button:hover {
+  background-color: #45a049;
+  color: #fff;
+}
+
+.containerDay .listItemContainer li {
+  background-color: #45a049;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.containerDay .listItemContainer li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.containerDay footer button {
+  background-color: #4CAF50;   
+  color: white;
+  transition: 0.3s;
+}
+
+.containerDay footer button:hover {
+  background-color: #45a049;
+  color: #fff;
 }
 
 /* title section of the container */
@@ -72,18 +127,21 @@ body{
   position: absolute;
   right: 0;
   top: 30%;
+  bottom:0;
   transform: translateY(-50%);
   padding: 12px 35px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
   color: white;
-  background-color: grey;
+  background-color: rgb(255, 3, 45);
+
 }
 
 .inputContainer button:hover{
-  color: black;
-  background-color: rgb(192, 188, 188)
+  color: white;
+  background-color: rgb(180, 6, 35);
+
 }
 
 
@@ -95,12 +153,15 @@ body{
 .listItemContainer li{
   background-color: rgb(44, 44, 44);
   color: white;
-  padding: 5px;
-  padding-right: 0;
-  border-radius: 5px;
-  list-style-type: none;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
-
+.listItemContainer li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
 .listItems{
   display: flex;
   justify-content: space-between;
@@ -165,7 +226,7 @@ footer{
   margin-top: 20px;
 }
 footer button{
-  background-color: rgb(223, 85, 108);
+  background-color: rgb(255, 3, 45);
   color: white;
   padding: 15px 40px;
   border-radius: 15px;
@@ -174,8 +235,8 @@ footer button{
   border: none;
 }
 footer button:hover{
-    background-color: rgb(202, 2, 36);
-
+  color: white;
+  background-color: rgb(180, 6, 35);
 }
 
 /* input message small  */
@@ -184,5 +245,6 @@ footer button:hover{
   margin-left: 5px;
   display: block;
   margin-top: 5px;
-  color: red;
+  color: rgb(255, 3, 45);
+  margin-bottom:20px;
 }

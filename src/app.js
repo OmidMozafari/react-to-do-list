@@ -1,8 +1,10 @@
+import { hover } from "@testing-library/user-event/dist/hover"
 import { type } from "@testing-library/user-event/dist/type"
-import { use, useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function App(){
 
+    
     const [inputData , setInputData] = useState("")
 
     function handleInputData (e){
@@ -43,46 +45,87 @@ export default function App(){
     }
 
 
-    const [screenStatus, setScreenStatus] = useState("day")
+    const [screenStatus, setScreenStatus] = useState("🌜 Night Mode")
 
     function handleScreenStatus(){
-
+        if(screenStatus === "🌜 Night Mode"){
+            
+            return setScreenStatus("🌞 Day Mode")
+        }else{
+            return setScreenStatus("🌜 Night Mode")
+        }
     }
+
+    useEffect(() => {
+        if (screenStatus === "🌞 Day Mode") {
+            document.body.style.background = "linear-gradient(135deg, #f09fa5ff, #d3b1b1ff)"
+        } else {
+            document.body.style.background = "linear-gradient(to right, #01153a, #0e3372)"
+        }
+        }, [screenStatus])
 
  
 
-    return <div className="container">
-        <DayOrNightMode />
-        <Header />
-        <Form handleInputData = {handleInputData} inputData = {inputData} handleListItem = {handleListItem} listItem = {listItem} />
-        <List listItem = {listItem} toggleItem = {toggleItem} deleteItem = {deleteItem}/>
-        <Footer deleteListItems = {deleteListItems} />
+    if(screenStatus === "🌜 Night Mode" ){
+
+    return <div className="containerNight">
+        <Header screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <Form handleInputData = {handleInputData} inputData = {inputData} handleListItem = {handleListItem} listItem = {listItem} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <List listItem = {listItem} toggleItem = {toggleItem} deleteItem = {deleteItem} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus}/>
+        <Footer deleteListItems = {deleteListItems} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <DayOrNightMode handleScreenStatus = {handleScreenStatus} screenStatus = {screenStatus}/>
     </div>
+
+    }else{
+
+    return <div className="containerDay">
+        <Header screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <Form handleInputData = {handleInputData} inputData = {inputData} handleListItem = {handleListItem} listItem = {listItem} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <List listItem = {listItem} toggleItem = {toggleItem} deleteItem = {deleteItem} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus}/>
+        <Footer deleteListItems = {deleteListItems} screenStatus = {screenStatus} handleScreenStatus = {handleScreenStatus} />
+        <DayOrNightMode handleScreenStatus = {handleScreenStatus} screenStatus = {screenStatus}/>
+    </div>
+
+    }
+
 }
-    function Header(){
+    function Header({screenStatus, handleScreenStatus}){
+        if(screenStatus === "🌜 Night Mode"){
     return <div className="Header">
         <h2>To-Do-List</h2>
         <div className="icon">📝</div>
     </div>
+        }else{
+            return <div className="Header">
+                <h2 style={{color: "black"}}>To-Do-List</h2>
+                <div className="icon">📝</div>
+            </div>
+        }
 }
 
-    function Form({handleInputData, handleSubmit, inputData, handleListItem}){
+    function Form({handleInputData, handleSubmit, inputData, handleListItem, screenStatus}){
 
        function handleSubmit(e){
         e.preventDefault()
         
     }
-
-
-    return <form className="inputContainer" onSubmit={handleSubmit}>
+    if(screenStatus === "🌜 Night Mode"){
+        return <form className="inputContainer" onSubmit={handleSubmit}>
          <input placeholder="Add your text" onChange={handleInputData} value={inputData} ></input>
          <small className="inputSmalMessage" style={{visibility: inputData === "" ? "visible" : "hidden"}}>
             Please add something to the input
             </small>
-
          <button onClick={handleListItem}>Add</button>
     </form> 
-   
+    }else{
+        return <form className="inputContainer" onSubmit={handleSubmit}>
+         <input placeholder="Add your text" onChange={handleInputData} value={inputData} ></input>
+         <small className="inputSmalMessage" style={{visibility: inputData === "" ? "visible" : "hidden"}}>
+            Please add something to the input
+            </small>
+         <button onClick={handleListItem }>Add</button>
+    </form> 
+    }
 }
 
 function List({listItem, toggleItem, deleteItem}){
@@ -105,12 +148,18 @@ function List({listItem, toggleItem, deleteItem}){
     </ul>
       
 }
-function Footer({deleteListItems}){
+function Footer({deleteListItems, screenStatus}){
+    if(screenStatus === "🌜 Night Mode"){
     return <footer>
         <button onClick={deleteListItems}>Delete All</button>
     </footer>
+    }else{
+        return <footer>
+        <button onClick={deleteListItems}>Delete All</button>
+    </footer>
+    }
 }
 
-function DayOrNightMode(){
-    return <button className="dayOrNightMode" onClick={handleScreenStatus}>🌞 Day</button>
+function DayOrNightMode({handleScreenStatus, screenStatus}){
+    return <button className="dayOrNightMode" onClick={handleScreenStatus} >{screenStatus}</button>
 }
